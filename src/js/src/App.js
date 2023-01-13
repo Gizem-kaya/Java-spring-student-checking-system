@@ -28,6 +28,7 @@ class App extends Component {
     this.setState({
       isFetching: true
     });
+    
     getAllStudents().then(res => res.json().then(students => {
       console.log(students);
       this.setState({ 
