@@ -1,18 +1,22 @@
 package com.gizem.demo.student;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class StudentService {
 
+    public final StudentDataAccessService studentDataAccessService;
+
+    @Autowired
+    public StudentService(StudentDataAccessService studentDataAccessService) {
+        this.studentDataAccessService = studentDataAccessService;
+    }
+
     public List<Student> getAllStudents () {
-        return List.of(
-                new Student(UUID.randomUUID(), "James", "Bond", "jamesbond@gmail.com", Student.Gender.MALE),
-                new Student(UUID.randomUUID(), "Elisa", "Tamara", "elisatamara@gmail.com", Student.Gender.FEMALE)
-        );
+        return studentDataAccessService.selectAllStudents();
     }
 
 }
