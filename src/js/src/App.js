@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Container from './Container';
+import AddStudentForm from './forms/AddStudentForm';
 import Footer from './Footer';
 import { 
   Table,
@@ -107,18 +108,19 @@ class App extends Component {
             columns={columns} 
             pagination={false}
             rowKey='studentID'/>
-            <Modal
-              title= 'Add new student'
-              visible= {isAddStudentModalVisible}
-              onOk= {this.closeAddStudentModal}
-              onCancel= {this.closeAddStudentModal} 
-              width= {1000}>
-                <h1>Hello Modal with Antd</h1>
-            </Modal>
-            <Footer 
-            numberOfStudents={students.length}
-            handleAddStudentClickEvent= {this.openAddStudentModal}/>
-          </Container>
+          <Modal
+            title= 'Add new student'
+            visible= {isAddStudentModalVisible}
+            onOk= {this.closeAddStudentModal}
+            onCancel= {this.closeAddStudentModal} 
+            width= {1000}>
+              <h1>Hello Modal with Antd</h1>
+              <AddStudentForm/>
+          </Modal>
+          <Footer 
+          numberOfStudents={students.length}
+          handleAddStudentClickEvent= {this.openAddStudentModal}/>
+        </Container>
       );
 
     }
