@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
-import { Input, Button } from "antd";
+import { Input, Button, Tag } from "antd";
 
 const inputMarginBottom = {marginBottom: '10px'};
+const tagStyle = {backgroundColor: '#f50', color: 'white', ...inputMarginBottom};
 
 class AddStudentForm extends Component {
     render () {
@@ -23,7 +24,7 @@ class AddStudentForm extends Component {
                 }
 
                 if (!values.email) {
-                    errors.email = 'Required';
+                    errors.email = 'Email required';
                 } else if (
                     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                 ) {
@@ -33,7 +34,7 @@ class AddStudentForm extends Component {
                 if (!values.gender) {
                     errors.gender = 'Gender required';
                 } else if (!['Male', 'MALE', 'Female', 'FEMALE'].includes(values.gender)){
-                    errors.gender = 'Gender must be MALE, male, FEMALE or female.'
+                    errors.gender = 'Gender must be MALE, male, FEMALE or female.';
                 }
 
                 return errors;
@@ -64,7 +65,7 @@ class AddStudentForm extends Component {
                         value={values.firstName}
                         placeholder= 'First name. E.g John'
                     />
-                    {errors.firstName && touched.firstName && errors.firstName}
+                    {errors.firstName && touched.firstName && <Tag style={tagStyle}>{errors.firstName}</Tag>}
                     <Input           
                         style= {inputMarginBottom}
                         name="lastName"
@@ -73,7 +74,7 @@ class AddStudentForm extends Component {
                         value={values.lastName}
                         placeholder= 'Last name. E.g Smith'
                     />
-                    {errors.lastName && touched.lastName && errors.lastName}
+                    {errors.lastName && touched.lastName && <Tag style={tagStyle}>{errors.lastName}</Tag>}
                     <Input  
                         style= {inputMarginBottom}         
                         name="email"
@@ -83,7 +84,7 @@ class AddStudentForm extends Component {
                         value={values.email}
                         placeholder= 'Email. E.g example@example.com'
                     />
-                    {errors.email && touched.email && errors.email}
+                    {errors.email && touched.email && <Tag style={tagStyle}>{errors.email}</Tag>}
                     <Input      
                         style= {inputMarginBottom}     
                         name="gender"
@@ -92,7 +93,7 @@ class AddStudentForm extends Component {
                         value={values.gender}
                         placeholder= 'Gender. E.g Male or Female'
                     />
-                    {errors.gender && touched.gender && errors.gender}
+                    {errors.gender && touched.gender && <Tag style={tagStyle}>{errors.gender}</Tag>}
                    
                     <Button type="submit" disabled={isSubmitting}>
                         Submit
