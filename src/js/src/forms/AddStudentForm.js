@@ -10,16 +10,32 @@ class AddStudentForm extends Component {
             
               
             <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ firstName: '', lastName: '', email: '', gender: '' }}
             validate={values => {
                 const errors = {};
-                if (!values.email) {
-                errors.email = 'Required';
-                } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                ) {
-                errors.email = 'Invalid email address';
+
+                if (!values.firstName) {
+                    errors.firstName = 'First name required';
                 }
+
+                if (!values.lastName) {
+                    errors.lastName = 'Last name required';
+                }
+
+                if (!values.email) {
+                    errors.email = 'Required';
+                } else if (
+                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                ) {
+                    errors.email = 'Invalid email address';
+                }
+
+                if (!values.gender) {
+                    errors.gender = 'Gender required';
+                } else if (!['Male', 'MALE', 'Female', 'FEMALE'].includes(values.gender)){
+                    errors.gender = 'Gender must be MALE, male, FEMALE or female.'
+                }
+
                 return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
