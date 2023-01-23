@@ -104,6 +104,7 @@ class App extends Component {
       return (
         <Container>
           <Table 
+            style={{paddingBottom : '100px'}}
             dataSource={students} 
             columns={columns} 
             pagination={false}

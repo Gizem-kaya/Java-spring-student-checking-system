@@ -18,6 +18,28 @@ public class StudentDataAccessService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    int insertStudent(UUID studentID, Student student) {
+        String sql = "" +
+                "INSERT INTO student (" +
+                "student_id, " +
+                "first_name, " +
+                "last_name, " +
+                "email, " +
+                "gender) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+
+        // If the query succeed it returns 1 else returns 0
+        return jdbcTemplate.update(
+                sql,
+                studentID,
+                student.getFirstName(),
+                student.getLastName(),
+                student.getEmail(),
+                student.getGender().name().toUpperCase()
+        );
+
+    }
 
     List<Student> selectAllStudents () {
         String sql = "" +
@@ -48,5 +70,7 @@ public class StudentDataAccessService {
             return new Student(studentId, firstName, lastName, email, gender);
         };
     }
+
+
 
 }

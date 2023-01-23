@@ -34,8 +34,8 @@ class AddStudentForm extends Component {
 
                 if (!values.gender) {
                     errors.gender = 'Gender required';
-                } else if (!['Male', 'MALE', 'Female', 'FEMALE'].includes(values.gender)){
-                    errors.gender = 'Gender must be MALE, male, FEMALE or female.';
+                } else if (!['MALE', 'FEMALE'].includes(values.gender)){
+                    errors.gender = 'Gender must be MALE or FEMALE.';
                 }
 
                 return errors;
