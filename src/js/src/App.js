@@ -41,7 +41,13 @@ class App extends Component {
       this.setState({ 
         students,
         isFetching: false});
-    }));
+    }))
+    .catch(error => {
+      console.log(error.error.message);
+      this.setState({
+        isFetching: false
+      });
+    });
   }
 
   render() {
@@ -111,7 +117,7 @@ class App extends Component {
             rowKey='studentID'/>
           <Modal
             title= 'Add new student'
-            visible= {isAddStudentModalVisible}
+            open= {isAddStudentModalVisible}
             onOk= {this.closeAddStudentModal}
             onCancel= {this.closeAddStudentModal} 
             width= {1000}>
