@@ -18,8 +18,8 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getAllStudents() {
-        //throw new IllegalStateException("You cannot get students");
-        return studentService.getAllStudents();
+        throw new IllegalStateException("You cannot get students");
+        //return studentService.getAllStudents();
     }
 
     @PostMapping

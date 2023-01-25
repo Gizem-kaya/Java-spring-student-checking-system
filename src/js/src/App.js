@@ -3,6 +3,7 @@ import './App.css';
 import Container from './Container';
 import AddStudentForm from './forms/AddStudentForm';
 import Footer from './Footer';
+import { errorNotification } from './forms/notification';
 import { 
   Table,
   Avatar,
@@ -40,10 +41,12 @@ class App extends Component {
       console.log(students);
       this.setState({ 
         students,
-        isFetching: false});
+        isFetching: false
+      });
     }))
     .catch(error => {
-      console.log(error.error.message);
+      const message = error.error.error;
+      errorNotification(message, message);
       this.setState({
         isFetching: false
       });
