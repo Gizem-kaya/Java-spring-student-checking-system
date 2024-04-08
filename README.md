@@ -1,4 +1,4 @@
-# SpringBootReactApplication
+# Student Checking System
 A web application that uses PostgreSQL as database, Spring Boot on server side and React on frontend.
 
   Tech stack:
